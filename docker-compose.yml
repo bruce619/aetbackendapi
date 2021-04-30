@@ -3,6 +3,14 @@ version: "3"
 services:
   db:
     image: postgres
+    environment:
+      - "SECRET_KEY:${SECRET_KEY}"
+      - "DEBUG:${DEBUG}"
+      - "POSTGRES_DATABASE:${DB_NAME}"
+      - "POSTGRES_USER:${DB_USER}"
+      - "POSTGRES_PASSWORD:${DB_PASSWORD}"
+      - "POSTGRES_HOST:${DB_HOST}"
+      - "POSTGRES_PORT:${DB_PORT}"
 
   app:
     build:

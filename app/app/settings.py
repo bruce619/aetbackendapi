@@ -23,9 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
+# SECRET_KEY = 'django-insecure-+b@w$$mkn+cy7gd52!w1%*34pw^9xpgh@r@721l232z1cxtr5m'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = config('DEBUG', cast=bool)
+# DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -99,6 +102,17 @@ DATABASES = {
         'PORT': config('DB_PORT', cast=int),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'api_test_db',
+#         'USER': 'postgres',
+#         'PASSWORD': 'copycat',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
