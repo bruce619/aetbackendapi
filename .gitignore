@@ -1,4 +1,4 @@
 # Environments
 .env
 venv/
-
+./app/.env
