@@ -3,7 +3,7 @@
 
 _You can run the collections locally with postman collection_
 
-## Check Out the published documentation
+## Check out the published documentation
 
 [AET API DOCUMENTATION LINK](https://documenter.getpostman.com/view/6979287/TzRLmqhQ)
 
