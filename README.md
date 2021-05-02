@@ -1,9 +1,15 @@
 # AET EMPLOYEE REST API TEST
 ##### The Employee Api collection manages employee data i.e create new employee data, get all employee data or an employee data, update an employee data, and delete an employee data.
 
-_You can run the collections locally with postman collection or \
+_You can run the collections locally with postman collection_
+
+## Check Out the published documentation
+
 [API Collection Link](https://documenter.getpostman.com/view/6979287/TzRLmqhQ)
+
+
 **But before you get to running it locally you might want to clone the repository and start up the docker container. \
+
 with: _"docker-compose up"_**
 
 **This will get you started also note the port 5342 for posgres might be lock so try running _"docker-compose up"_ again**
