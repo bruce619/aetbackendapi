@@ -8,9 +8,9 @@ _You can run the collections locally with postman collection_
 [API Collection Link](https://documenter.getpostman.com/view/6979287/TzRLmqhQ)
 
 
-**But before you get to running it locally you might want to clone the repository and start up the docker container. \
+**But before you get to running it locally you might want to clone the repository and start up the docker container.**
 
-with: _"docker-compose up"_**
+**with: _"docker-compose up"_**
 
 **This will get you started also note the port 5342 for posgres might be lock so try running _"docker-compose up"_ again**
 
