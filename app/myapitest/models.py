@@ -4,14 +4,24 @@ from .managers import CustomUserManager
 from django.utils import timezone
 
 
+def ids():
+    no = Employee.objects.count()
+    if no is None:
+        return 1
+    else:
+        return no + 1
+
+
 class Employee(AbstractBaseUser):
     email = models.EmailField(verbose_name='Email', unique=True, error_messages={
         'unique': "A user with that email already exists.",
     })
-    employee_id = models.CharField(verbose_name="Employee ID", max_length=15, unique=True)
+    employee_id = models.CharField(verbose_name="Employee ID", max_length=6, unique=True, error_messages={
+        'unique': "A employee id already exists.",
+    })
     first_name = models.CharField(verbose_name='First Name', max_length=30)
     last_name = models.CharField(verbose_name='Last Name', max_length=30)
-    age = models.PositiveIntegerField(null=True, blank=True)
+    age = models.CharField(verbose_name="Age", max_length=3)
     join_date = models.DateTimeField(verbose_name='Date Joined', default=timezone.now)
     last_login = models.DateTimeField(verbose_name='Last Login', auto_now=True)
     is_active = models.BooleanField(default=True)
@@ -43,8 +53,7 @@ class Employee(AbstractBaseUser):
         return self.is_admin
 
     def save(self, *args, **kwargs):
-        mod_id = not self.pk
+        if not self.employee_id:
+            self.employee_id = "E%05d" % ids()
         super(Employee, self).save(*args, **kwargs)
-        if mod_id:
-            self.employee_id = "E%05d" % int(self.id)
-            super(Employee, self).save(*args, **kwargs)
+

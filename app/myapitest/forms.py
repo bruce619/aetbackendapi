@@ -1,7 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from .models import Employee
-from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
 
 class UserCreationForm(forms.ModelForm):
@@ -12,8 +11,7 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = Employee
-        fields = ('email', 'employee_id', 'first_name', 'last_name', 'age',)
-        exclude = ('employee_id', 'joined_date')
+        fields = ('email', 'first_name', 'last_name', 'age',)
 
     def clean_password2(self):
         # Check that the two password entries match
@@ -40,12 +38,13 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = Employee
-        fields = ('email', 'employee_id', 'first_name', 'last_name', 'age', 'password', 'is_active', 'is_admin',)
+        fields = ('email', 'employee_id', 'first_name', 'last_name', 'age', 'is_active', 'is_admin',)
+        exclude = ('employee_id',)
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
         try:
-            account = Employee.objects.exclude(pk=self.instance.pk).get(email=email)
+            user = Employee.objects.exclude(pk=self.instance.pk).get(email=email)
         except Employee.DoesNotExist:
             return email
-        raise forms.ValidationError('Email "%s" is already in use.' % account)
+        raise forms.ValidationError('Email "%s" is already in use.' % user)
