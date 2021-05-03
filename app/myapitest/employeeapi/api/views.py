@@ -1,7 +1,7 @@
 from .serializers import EmployeeSerializer
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view, permission_classes
 from ...models import Employee
@@ -51,11 +51,11 @@ def get_update_delete_an_employee(request, employee_id):
             employee.delete()
             return Response({'success': "successfully deleted"}, status=status.HTTP_204_NO_CONTENT)
         return Response({'error': "you do not have the permission to delete this data"},
-                        status=status.HTTP_400_BAD_REQUEST)
+                        status=status.HTTP_403_FORBIDDEN)
 
     if request.user.employee_id != emp_id and not request.user.is_admin:
         return Response({'Response': "You do not have the permission to edit"},
-                        status=status.HTTP_400_BAD_REQUEST)
+                        status=status.HTTP_403_FORBIDDEN)
 
     if request.method == 'PUT':
         serializer = EmployeeSerializer(employee, data=request.data)

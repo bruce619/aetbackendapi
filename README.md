@@ -23,7 +23,7 @@ _You can run the collections locally with postman collection_
 | Container     | Docker     |
 | Production Server      | Heroku      |
 | Server-side framework       | Python, Django, & Django Rest Framework     |
-| Test       | Python & Django Unittest     |
+| Test       | Django Rest Framework Unittest     |
 | DB       | Postgres     |
 
 ### Functionality:  
