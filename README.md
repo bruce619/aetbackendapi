@@ -10,7 +10,7 @@ _You can run the collections locally with postman collection_
 
 **But before you get to running it locally you might want to clone the repository and start up the docker container.**
 
-**with: _"docker-compose up"_**
+**with: _"docker-compose up" on  OS/Arch: linux/amd64_**
 
 **This will get you started also note the port 5342 for posgres might be lock so try running _"docker-compose up"_ again**
 
@@ -21,7 +21,6 @@ _You can run the collections locally with postman collection_
 | ------------- |:-------------:|
 | Version Control     | Git & GitHub     |
 | Container     | Docker     |
-| Production Server      | Heroku      |
 | Server-side framework       | Python, Django, & Django Rest Framework     |
 | Test       | Django Rest Framework Unittest     |
 | DB       | Postgres     |
